@@ -50,7 +50,7 @@ app.use(router.allowedMethods());
 // 启动应用程序并监听端口
 const startApp = (port) => {
   app.listen(port, () => {
-    console.log(`成功在 ${port} 端口上运行`);
+    console.info(`成功在 ${port} 端口上运行`);
   });
 };
 
@@ -61,7 +61,7 @@ const checkPort = (port) => {
       .createServer()
       .once("error", (err) => {
         if (err.code === "EADDRINUSE") {
-          console.log(`端口 ${port} 已被占用, 正在尝试其他端口...`);
+          console.info(`端口 ${port} 已被占用, 正在尝试其他端口...`);
           server.close();
           resolve(false);
         } else {
